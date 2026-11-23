@@ -4,6 +4,7 @@ import { GAME_MODES } from "./data/modes";
 import { getModeCovers } from "./lib/animeCovers";
 import ModeCatalog from "./components/ModeCatalog";
 import HeroTeaserCard from "./components/HeroTeaserCard";
+import ThemeToggle from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "AniGuess | เกมทายตัวละครอนิเมะและโปเกมอน",
@@ -15,9 +16,9 @@ export default async function LandingPage() {
   const covers = await getModeCovers();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FFFDF7] text-[#181411]">
+    <div className="min-h-screen flex flex-col bg-[#FFFDF7] dark:bg-[#12100E] text-[#181411] dark:text-[#F5EFE6]">
       {/* Header */}
-      <header className="border-b border-[#EAE0D0] bg-[#FFFDF7]/90 sticky top-0 z-30 backdrop-blur-md">
+      <header className="border-b border-[#EAE0D0] dark:border-[#2E2924] bg-[#FFFDF7]/90 dark:bg-[#12100E]/90 sticky top-0 z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
           <Link
             href="/"
@@ -26,21 +27,22 @@ export default async function LandingPage() {
             <span className="w-7 h-7 rounded-lg bg-[#EA580C] text-white flex items-center justify-center font-mono text-xs font-bold shadow-xs">
               A
             </span>
-            <span className="font-bold text-xl tracking-tight text-[#181411]">
+            <span className="font-bold text-xl tracking-tight text-[#181411] dark:text-[#F5EFE6]">
               AniGuess
             </span>
-            <span className="hidden sm:inline-block font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-md bg-[#FFF7ED] border border-[#FED7AA] text-[#C2410C] font-semibold">
+            <span className="hidden sm:inline-block font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-md bg-[#FFF7ED] dark:bg-[#25211D] border border-[#FED7AA] dark:border-[#EA580C]/40 text-[#C2410C] dark:text-[#FB923C] font-semibold">
               14 Series
             </span>
           </Link>
 
-          <nav className="flex items-center gap-3 sm:gap-5">
+          <nav className="flex items-center gap-3 sm:gap-4">
             <a
               href="#modes"
-              className="text-sm font-medium text-[#645B52] hover:text-[#181411] transition-colors hidden sm:inline cursor-pointer"
+              className="text-sm font-medium text-[#645B52] dark:text-[#A89F94] hover:text-[#181411] dark:hover:text-[#F5EFE6] transition-colors hidden sm:inline cursor-pointer"
             >
               เลือกเรื่องทั้งหมด
             </a>
+            <ThemeToggle />
             <Link
               href="/play"
               className="px-4 sm:px-5 py-2 rounded-xl bg-[#EA580C] text-white text-sm font-semibold hover:bg-[#C2410C] transition-colors shadow-xs cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C]"
@@ -53,7 +55,7 @@ export default async function LandingPage() {
 
       {/* Anime Game Lobby Hero */}
       <main className="flex-1 relative">
-        <section className="relative border-b border-[#EAE0D0] bg-white overflow-hidden">
+        <section className="relative border-b border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] overflow-hidden">
           {/* Manga Speedlines + Screentone Background */}
           <div
             className="absolute inset-0 manga-speedlines pointer-events-none opacity-85"
@@ -72,19 +74,19 @@ export default async function LandingPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               {/* Left Column */}
               <div className="lg:col-span-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFF7ED] border border-[#FED7AA] text-[#C2410C] text-xs font-semibold mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFF7ED] dark:bg-[#25211D] border border-[#FED7AA] dark:border-[#EA580C]/40 text-[#C2410C] dark:text-[#FB923C] text-xs font-semibold mb-6">
                   <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
                   <span>14 เรื่องดัง • รองรับชื่อญี่ปุ่น &amp; อังกฤษ</span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[#181411] mb-5">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[#181411] dark:text-[#F5EFE6] mb-5">
                   ทายชื่อตัวละคร
                   <span className="block text-[#EA580C] mt-1">
                     จากเงาและภาพเบลอ
                   </span>
                 </h1>
 
-                <p className="text-base sm:text-lg text-[#645B52] max-w-xl leading-relaxed mb-8">
+                <p className="text-base sm:text-lg text-[#645B52] dark:text-[#A89F94] max-w-xl leading-relaxed mb-8">
                   ท้าทายความจำสายอนิเมะและโปเกมอน ลองกดดูตัวอย่างเงาด้านข้างหรือเลือกเรื่องที่ชอบด้านล่างเพื่อเริ่มเก็บสตรีคได้เลย
                 </p>
 
@@ -112,7 +114,7 @@ export default async function LandingPage() {
 
                   <a
                     href="#modes"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-[#EAE0D0] text-[#181411] font-bold text-base hover:border-[#EA580C]/50 hover:bg-[#FFF7ED]/60 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C]"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-[#25211D] border border-[#EAE0D0] dark:border-[#2E2924] text-[#181411] dark:text-[#F5EFE6] font-bold text-base hover:border-[#EA580C]/50 hover:bg-[#FFF7ED]/60 dark:hover:bg-[#2E2924] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C]"
                   >
                     <span>ดูทั้ง 14 เรื่อง</span>
                   </a>
@@ -130,7 +132,7 @@ export default async function LandingPage() {
                       />
                     ))}
                   </div>
-                  <span className="font-mono text-xs text-[#645B52]">
+                  <span className="font-mono text-xs text-[#645B52] dark:text-[#A89F94]">
                     Pokémon • One Piece • Bleach • JJK &amp; more
                   </span>
                 </div>
@@ -145,7 +147,7 @@ export default async function LandingPage() {
         </section>
 
         {/* How to Play: 3 Steps */}
-        <section className="border-b border-[#EAE0D0] bg-[#FFFDF7]">
+        <section className="border-b border-[#EAE0D0] dark:border-[#2E2924] bg-[#FFFDF7] dark:bg-[#12100E]">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
               <div>
@@ -153,19 +155,19 @@ export default async function LandingPage() {
                   <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
                   HOW TO PLAY
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181411]">
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181411] dark:text-[#F5EFE6]">
                   เล่นง่ายใน 3 ขั้นตอน
                 </h2>
               </div>
-              <p className="text-sm text-[#645B52]">
+              <p className="text-sm text-[#645B52] dark:text-[#A89F94]">
                 พร้อมระบบบันทึกสถิติสูงสุดแยกตามเรื่องอัตโนมัติ
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-              <div className="rounded-2xl border border-[#EAE0D0] bg-white p-6 flex flex-col gap-4">
+              <div className="rounded-2xl border border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-6 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#FFF7ED] text-[#EA580C]">
+                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#FFF7ED] dark:bg-[#25211D] text-[#EA580C]">
                     STEP 01
                   </span>
                   <svg
@@ -184,22 +186,22 @@ export default async function LandingPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#181411] mb-1.5">
+                  <h3 className="text-lg font-bold text-[#181411] dark:text-[#F5EFE6] mb-1.5">
                     เลือกเรื่องที่ถนัด
                   </h3>
-                  <p className="text-sm text-[#645B52] leading-relaxed">
+                  <p className="text-sm text-[#645B52] dark:text-[#A89F94] leading-relaxed">
                     เลือกจาก 14 ซีรีส์ดัง ทั้ง Pokémon (เงาดำ + เสียงร้อง) และอนิเมะอีก 13 เรื่อง (ภาพเบลอ)
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[#EAE0D0] bg-white p-6 flex flex-col gap-4">
+              <div className="rounded-2xl border border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-6 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#EFF6FF] text-[#2563EB]">
+                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#EFF6FF] dark:bg-[#1E293B] text-[#2563EB] dark:text-[#60A5FA]">
                     STEP 02
                   </span>
                   <svg
-                    className="w-5 h-5 text-[#2563EB]"
+                    className="w-5 h-5 text-[#2563EB] dark:text-[#60A5FA]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -214,22 +216,22 @@ export default async function LandingPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#181411] mb-1.5">
+                  <h3 className="text-lg font-bold text-[#181411] dark:text-[#F5EFE6] mb-1.5">
                     พิมพ์ทายได้ 2 ภาษา
                   </h3>
-                  <p className="text-sm text-[#645B52] leading-relaxed">
+                  <p className="text-sm text-[#645B52] dark:text-[#A89F94] leading-relaxed">
                     รองรับทั้งชื่อภาษาญี่ปุ่นและอังกฤษ/โรมันจิ พร้อมตัวช่วย Autocomplete ระหว่างพิมพ์
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[#EAE0D0] bg-white p-6 flex flex-col gap-4">
+              <div className="rounded-2xl border border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-6 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#ECFDF5] text-[#059669]">
+                  <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#ECFDF5] dark:bg-[#064E3B]/50 text-[#059669] dark:text-[#34D399]">
                     STEP 03
                   </span>
                   <svg
-                    className="w-5 h-5 text-[#059669]"
+                    className="w-5 h-5 text-[#059669] dark:text-[#34D399]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -244,10 +246,10 @@ export default async function LandingPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#181411] mb-1.5">
+                  <h3 className="text-lg font-bold text-[#181411] dark:text-[#F5EFE6] mb-1.5">
                     สะสมสตรีค &amp; ใช้คำใบ้
                   </h3>
-                  <p className="text-sm text-[#645B52] leading-relaxed">
+                  <p className="text-sm text-[#645B52] dark:text-[#A89F94] leading-relaxed">
                     ตอบถูกต่อเนื่องเพื่อทำลายสถิติสูงสุดของแต่ละเรื่อง หรือกดดูคำใบ้ (-1 สตรีค) เมื่อเจอตัวหิน
                   </p>
                 </div>
@@ -269,8 +271,8 @@ export default async function LandingPage() {
       </main>
 
       {/* Clean Footer */}
-      <footer className="border-t border-[#EAE0D0] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-[#645B52]">
+      <footer className="border-t border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-[#645B52] dark:text-[#A89F94]">
           <span>AniGuess — Anime &amp; Pokémon Quiz</span>
           <span>Powered by PokéAPI &amp; AniList</span>
         </div>

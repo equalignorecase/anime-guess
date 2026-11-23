@@ -31,9 +31,17 @@ export default function RootLayout({
   return (
     <html
       lang="th"
+      suppressHydrationWarning
       className={`${notoTh.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FFFDF7] text-[#181411] font-sans selection:bg-[#EA580C] selection:text-white">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('aniguess-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#FFFDF7] dark:bg-[#12100E] text-[#181411] dark:text-[#F5EFE6] font-sans selection:bg-[#EA580C] selection:text-white transition-colors duration-200">
         {children}
       </body>
     </html>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -8,6 +9,16 @@
     --ink: #181411;
     --ink-muted: #645B52;
     --border-subtle: #EAE0D0;
+    --accent-primary: #EA580C;
+  }
+
+  .dark {
+    --canvas: #12100E;
+    --surface: #1B1815;
+    --surface-muted: #25211D;
+    --ink: #F5EFE6;
+    --ink-muted: #A89F94;
+    --border-subtle: #2E2924;
     --accent-primary: #EA580C;
   }
 
@@ -37,6 +48,10 @@
     transition: filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  .dark .silhouette {
+    filter: brightness(0) invert(0.92);
+  }
+
   .reveal {
     filter: brightness(1) contrast(1);
   }
@@ -56,6 +71,10 @@
   .dot-stage {
     background-image: radial-gradient(rgba(9, 9, 11, 0.08) 1px, transparent 1px);
     background-size: 18px 18px;
+  }
+
+  .dark .dot-stage {
+    background-image: radial-gradient(rgba(245, 239, 230, 0.08) 1px, transparent 1px);
   }
 
   /* Manga halftone screentone */

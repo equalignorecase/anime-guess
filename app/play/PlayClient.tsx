@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { GAME_MODES, type GameMode } from "../data/modes";
+import ThemeToggle from "../components/ThemeToggle";
 
 interface NameOption {
   primary: string;
@@ -384,7 +385,7 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FFFDF7] text-[#181411] relative">
+    <div className="min-h-screen flex flex-col bg-[#FFFDF7] dark:bg-[#12100E] text-[#181411] dark:text-[#F5EFE6] relative">
       {/* Dynamic Per-Series Manga Screentone & Speedlines */}
       <div
         className="fixed inset-0 pointer-events-none -z-0 overflow-hidden"
@@ -407,11 +408,11 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
       </div>
 
       {/* Top Bar */}
-      <header className="border-b border-[#EAE0D0] bg-[#FFFDF7]/90 sticky top-0 z-30 backdrop-blur-md">
+      <header className="border-b border-[#EAE0D0] dark:border-[#2E2924] bg-[#FFFDF7]/90 dark:bg-[#12100E]/90 sticky top-0 z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#52525B] hover:text-[#09090B] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2563EB]"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#52525B] dark:text-[#A89F94] hover:text-[#09090B] dark:hover:text-[#F5EFE6] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2563EB]"
           >
             <svg
               className="w-4 h-4"
@@ -426,25 +427,28 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
             <span>หน้าหลัก</span>
           </Link>
 
-          <Link href="/" className="font-bold text-lg tracking-tight text-[#09090B]">
+          <Link href="/" className="font-bold text-lg tracking-tight text-[#09090B] dark:text-[#F5EFE6]">
             AniGuess
           </Link>
 
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold"
-            style={{ backgroundColor: currentModeInfo.softBg, color: currentModeInfo.accent }}
-          >
-            <span
-              className="w-2 h-2 rounded-full"
-              style={{ backgroundColor: currentModeInfo.accent }}
-            />
-            <span>{currentModeInfo.name}</span>
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle />
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold"
+              style={{ backgroundColor: currentModeInfo.softBg, color: currentModeInfo.accent }}
+            >
+              <span
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: currentModeInfo.accent }}
+              />
+              <span className="hidden sm:inline">{currentModeInfo.name}</span>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Colorful Mode Selector Strip */}
-      <div className="border-b border-[#E4E4E7] bg-white">
+      <div className="border-b border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3">
           <div
             className="flex gap-2 overflow-x-auto pb-1 snap-x"
@@ -472,7 +476,7 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
                   className={`snap-start shrink-0 px-3.5 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#2563EB] ${
                     active
                       ? "shadow-xs"
-                      : "bg-[#FAFAFA] text-[#52525B] border-[#E4E4E7] hover:border-[#09090B]/30 hover:text-[#09090B]"
+                      : "bg-[#FAFAFA] dark:bg-[#25211D] text-[#52525B] dark:text-[#A89F94] border-[#E4E4E7] dark:border-[#2E2924] hover:border-[#09090B]/30 dark:hover:border-[#F5EFE6]/30 hover:text-[#09090B] dark:hover:text-[#F5EFE6]"
                   }`}
                 >
                   <span
@@ -492,14 +496,14 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
       <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Specimen Card */}
-          <section className="lg:col-span-6 rounded-2xl border border-[#E4E4E7] bg-white overflow-hidden shadow-xs">
-            <div className="px-5 py-3.5 border-b border-[#EAE0D0] flex items-center justify-between gap-2">
+          <section className="lg:col-span-6 rounded-2xl border border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] overflow-hidden shadow-xs">
+            <div className="px-5 py-3.5 border-b border-[#EAE0D0] dark:border-[#2E2924] flex items-center justify-between gap-2">
               {entry ? (
-                <div className="font-mono text-xs font-medium text-[#645B52]">
+                <div className="font-mono text-xs font-medium text-[#645B52] dark:text-[#A89F94]">
                   {`SPECIMEN #${String(entry.id).padStart(4, "0")}`}
                 </div>
               ) : (
-                <div className="w-28 h-4 rounded bg-[#F7F1E6] animate-pulse" />
+                <div className="w-28 h-4 rounded bg-[#F7F1E6] dark:bg-[#25211D] animate-pulse" />
               )}
               <div className="flex items-center gap-2">
                 <span
@@ -529,7 +533,7 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
             </div>
 
             <div
-              className={`relative aspect-square w-full max-h-[420px] mx-auto flex items-center justify-center bg-[#FAFAFA] dot-stage overflow-hidden ${
+              className={`relative aspect-square w-full max-h-[420px] mx-auto flex items-center justify-center bg-[#FAFAFA] dark:bg-[#12100E] dot-stage overflow-hidden ${
                 shake ? "shake" : ""
               }`}
             >
@@ -575,17 +579,17 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
               )}
 
               {(status === "loading" || (entry && !imageLoaded)) && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/75 backdrop-blur-xs z-20">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/75 dark:bg-[#12100E]/80 backdrop-blur-xs z-20">
                   <div className="pokeball-spinner" />
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#645B52]">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#645B52] dark:text-[#A89F94]">
                     Loading...
                   </span>
                 </div>
               )}
             </div>
 
-            <div className="px-5 py-3.5 border-t border-[#E4E4E7] bg-white flex items-center justify-between gap-2">
-              <span className="font-mono text-xs text-[#71717A]">STATUS</span>
+            <div className="px-5 py-3.5 border-t border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] flex items-center justify-between gap-2">
+              <span className="font-mono text-xs text-[#71717A] dark:text-[#A89F94]">STATUS</span>
               <span
                 className="font-mono text-xs font-bold tracking-wide"
                 style={{
@@ -603,16 +607,16 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
           <section className="lg:col-span-6 flex flex-col gap-5">
             {/* Scoreboard */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-[#E4E4E7] bg-white p-4 sm:p-5">
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#71717A] mb-1">
+              <div className="rounded-2xl border border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-4 sm:p-5">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#71717A] dark:text-[#A89F94] mb-1">
                   Current Streak
                 </div>
-                <div className="font-mono text-3xl sm:text-4xl font-bold text-[#09090B]">
+                <div className="font-mono text-3xl sm:text-4xl font-bold text-[#09090B] dark:text-[#F5EFE6]">
                   {String(streak).padStart(2, "0")}
                 </div>
               </div>
-              <div className="rounded-2xl border border-[#E4E4E7] bg-white p-4 sm:p-5">
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#71717A] mb-1">
+              <div className="rounded-2xl border border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-4 sm:p-5">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#71717A] dark:text-[#A89F94] mb-1">
                   Best Record
                 </div>
                 <div
@@ -625,15 +629,15 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
             </div>
 
             {/* Control Card */}
-            <div className="rounded-2xl border border-[#E4E4E7] bg-white p-5 sm:p-6 flex flex-col gap-5 shadow-xs">
+            <div className="rounded-2xl border border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] p-5 sm:p-6 flex flex-col gap-5 shadow-xs">
               <div>
-                <div className="font-mono text-xs text-[#71717A] mb-1">
+                <div className="font-mono text-xs text-[#71717A] dark:text-[#A89F94] mb-1">
                   {currentModeInfo.jpTitle}
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#09090B]">
+                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#09090B] dark:text-[#F5EFE6]">
                   {mode === "pokemon" ? "ใครคือโปเกมอนตัวนี้?" : "ใครคือตัวละครนี้?"}
                 </h1>
-                <p className="text-sm text-[#52525B] mt-1">
+                <p className="text-sm text-[#52525B] dark:text-[#A89F94] mt-1">
                   พิมพ์ชื่อได้ทั้งภาษาอังกฤษ/โรมันจิ หรือภาษาญี่ปุ่น
                 </p>
               </div>
@@ -653,12 +657,12 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
                   disabled={status !== "guessing"}
                   placeholder="เช่น Pikachu หรือ ピカチュウ..."
                   autoComplete="off"
-                  className="w-full h-13 px-4 rounded-xl bg-[#FAFAFA] border border-[#E4E4E7] text-base sm:text-lg font-medium text-[#09090B] placeholder:text-[#A1A1AA] focus:outline-none focus:bg-white focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 disabled:opacity-50 transition-all"
+                  className="w-full h-13 px-4 rounded-xl bg-[#FAFAFA] dark:bg-[#12100E] border border-[#E4E4E7] dark:border-[#2E2924] text-base sm:text-lg font-medium text-[#09090B] dark:text-[#F5EFE6] placeholder:text-[#A1A1AA] dark:placeholder:text-[#71685E] focus:outline-none focus:bg-white dark:focus:bg-[#1B1815] focus:border-[#09090B] dark:focus:border-[#EA580C] focus:ring-2 focus:ring-[#09090B]/10 dark:focus:ring-[#EA580C]/20 disabled:opacity-50 transition-all"
                   autoFocus
                 />
 
                 {showSuggestions && suggestions.length > 0 && (
-                  <div className="absolute top-14 left-0 w-full bg-white border border-[#E4E4E7] rounded-xl z-30 max-h-56 overflow-y-auto shadow-lg">
+                  <div className="absolute top-14 left-0 w-full bg-white dark:bg-[#1B1815] border border-[#E4E4E7] dark:border-[#2E2924] rounded-xl z-30 max-h-56 overflow-y-auto shadow-lg">
                     {suggestions.map((opt, idx) => (
                       <button
                         key={`${opt.primary}-${idx}`}
@@ -667,11 +671,11 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
                           e.preventDefault();
                           selectSuggestion(opt);
                         }}
-                        className="w-full px-4 py-3 text-left border-b border-[#F4F4F5] last:border-b-0 hover:bg-[#FAFAFA] transition-colors flex items-center justify-between gap-3 cursor-pointer"
+                        className="w-full px-4 py-3 text-left border-b border-[#F4F4F5] dark:border-[#2E2924] last:border-b-0 hover:bg-[#FAFAFA] dark:hover:bg-[#25211D] transition-colors flex items-center justify-between gap-3 cursor-pointer"
                       >
-                        <span className="font-semibold text-[#09090B]">{opt.primary}</span>
+                        <span className="font-semibold text-[#09090B] dark:text-[#F5EFE6]">{opt.primary}</span>
                         {opt.secondary && (
-                          <span className="font-mono text-xs text-[#71717A]">
+                          <span className="font-mono text-xs text-[#71717A] dark:text-[#A89F94]">
                             {opt.secondary}
                           </span>
                         )}
@@ -718,7 +722,7 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
                       <button
                         type="button"
                         onClick={handleGiveUp}
-                        className="h-12 px-5 rounded-xl bg-[#F4F4F5] text-[#52525B] font-semibold text-sm hover:bg-[#E4E4E7] hover:text-[#09090B] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#09090B]"
+                        className="h-12 px-5 rounded-xl bg-[#F4F4F5] dark:bg-[#25211D] text-[#52525B] dark:text-[#A89F94] font-semibold text-sm hover:bg-[#E4E4E7] dark:hover:bg-[#2E2924] hover:text-[#09090B] dark:hover:text-[#F5EFE6] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#09090B]"
                       >
                         ยอมแพ้
                       </button>
@@ -781,8 +785,8 @@ export default function PlayClient({ initialMode }: { initialMode: GameMode }) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#E4E4E7] bg-white mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs text-[#71717A]">
+      <footer className="border-t border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] mt-auto relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs text-[#71717A] dark:text-[#A89F94]">
           <span>AniGuess — Modern Minimal Edition</span>
           <span>Powered by PokéAPI &amp; AniList</span>
         </div>

@@ -75,15 +75,15 @@ export default function HeroTeaserCard() {
   };
 
   return (
-    <div className="rounded-2xl border border-[#EAE0D0] bg-white overflow-hidden shadow-sm">
+    <div className="rounded-2xl border border-[#EAE0D0] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] overflow-hidden shadow-sm">
       {/* Top Game Card Bar */}
-      <div className="px-5 py-3.5 border-b border-[#EAE0D0] flex items-center justify-between gap-2">
+      <div className="px-5 py-3.5 border-b border-[#EAE0D0] dark:border-[#2E2924] flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span
             className="w-2.5 h-2.5 rounded-full"
             style={{ backgroundColor: current.accent }}
           />
-          <span className="font-mono text-xs font-bold text-[#09090B]">
+          <span className="font-mono text-xs font-bold text-[#09090B] dark:text-[#F5EFE6]">
             MINI QUIZ PREVIEW
           </span>
         </div>
@@ -99,7 +99,7 @@ export default function HeroTeaserCard() {
       </div>
 
       {/* Character Silhouette Stage */}
-      <div className="relative aspect-[4/3] w-full flex items-center justify-center bg-[#FAFAFA] dot-stage overflow-hidden">
+      <div className="relative aspect-[4/3] w-full flex items-center justify-center bg-[#FAFAFA] dark:bg-[#12100E] dot-stage overflow-hidden">
         {revealed && (
           <div
             className="absolute inset-0 pointer-events-none opacity-15"
@@ -111,7 +111,7 @@ export default function HeroTeaserCard() {
 
         <div className="relative w-48 h-48 sm:w-56 sm:h-56 transition-transform duration-500">
           {!imageLoaded && (
-            <div className="absolute inset-4 rounded-2xl bg-[#EAE0D0]/70 animate-pulse" />
+            <div className="absolute inset-4 rounded-2xl bg-[#EAE0D0]/70 dark:bg-[#2E2924] animate-pulse" />
           )}
           <Image
             key={current.id}
@@ -129,7 +129,7 @@ export default function HeroTeaserCard() {
 
         {/* Bottom Floating Name Tag when Revealed */}
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-          <span className="font-mono text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-white/90 border border-[#E4E4E7] text-[#52525B]">
+          <span className="font-mono text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-white/90 dark:bg-[#1B1815]/90 border border-[#E4E4E7] dark:border-[#2E2924] text-[#52525B] dark:text-[#A89F94]">
             {current.series}
           </span>
           {revealed && (
@@ -144,7 +144,7 @@ export default function HeroTeaserCard() {
       </div>
 
       {/* Interactive Controls */}
-      <div className="p-4 border-t border-[#E4E4E7] bg-white flex items-center gap-2.5">
+      <div className="p-4 border-t border-[#E4E4E7] dark:border-[#2E2924] bg-white dark:bg-[#1B1815] flex items-center gap-2.5">
         <button
           type="button"
           onClick={() => setRevealed((r) => !r)}
@@ -157,14 +157,14 @@ export default function HeroTeaserCard() {
         <button
           type="button"
           onClick={handleNext}
-          className="h-10 px-4 rounded-xl bg-[#F4F4F5] text-[#09090B] text-xs sm:text-sm font-semibold hover:bg-[#E4E4E7] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
+          className="h-10 px-4 rounded-xl bg-[#F4F4F5] dark:bg-[#25211D] text-[#09090B] dark:text-[#F5EFE6] text-xs sm:text-sm font-semibold hover:bg-[#E4E4E7] dark:hover:bg-[#2E2924] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
         >
           สุ่มตัวใหม่
         </button>
 
         <Link
           href="/play?mode=pokemon"
-          className="h-10 px-3.5 rounded-xl border border-[#E4E4E7] text-[#09090B] text-xs font-bold inline-flex items-center justify-center hover:border-[#09090B] transition-colors cursor-pointer"
+          className="h-10 px-3.5 rounded-xl border border-[#E4E4E7] dark:border-[#2E2924] text-[#09090B] dark:text-[#F5EFE6] text-xs font-bold inline-flex items-center justify-center hover:border-[#09090B] dark:hover:border-[#F5EFE6] transition-colors cursor-pointer"
           title="เข้าเล่นโหมด Pokémon"
           aria-label="เข้าเล่นโหมด Pokémon"
         >

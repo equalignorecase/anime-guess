@@ -26,7 +26,7 @@ export default function ModeCatalog({ covers }: ModeCatalogProps) {
             <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
             ANIME GAME LOBBY
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#181411]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#181411] dark:text-[#F5EFE6]">
             เลือกเรื่องที่อยากท้าทาย
           </h2>
         </div>
@@ -54,7 +54,7 @@ export default function ModeCatalog({ covers }: ModeCatalogProps) {
                 className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C] ${
                   active
                     ? "bg-[#EA580C] text-white border-[#EA580C] shadow-xs"
-                    : "bg-white text-[#645B52] border-[#EAE0D0] hover:border-[#EA580C]/40 hover:text-[#181411]"
+                    : "bg-white dark:bg-[#1B1815] text-[#645B52] dark:text-[#A89F94] border-[#EAE0D0] dark:border-[#2E2924] hover:border-[#EA580C]/40 hover:text-[#181411] dark:hover:text-[#F5EFE6]"
                 }`}
               >
                 <span>{cat.label}</span>
@@ -81,11 +81,11 @@ export default function ModeCatalog({ covers }: ModeCatalogProps) {
             <Link
               key={m.id}
               href={`/play?mode=${m.id}`}
-              className="group bg-white rounded-2xl border border-[#EAE0D0] p-4 flex gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-[#EA580C]/40 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C]"
+              className="group bg-white dark:bg-[#1B1815] rounded-2xl border border-[#EAE0D0] dark:border-[#2E2924] p-4 flex gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-[#EA580C]/40 dark:hover:border-[#EA580C]/60 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EA580C]"
             >
               {/* Left Poster Thumbnail */}
               <div
-                className="relative w-24 sm:w-28 aspect-[3/4] shrink-0 rounded-xl overflow-hidden border border-[#E4E4E7]"
+                className="relative w-24 sm:w-28 aspect-[3/4] shrink-0 rounded-xl overflow-hidden border border-[#E4E4E7] dark:border-[#2E2924]"
                 style={{ backgroundColor: m.softBg }}
               >
                 {cover ? (
@@ -126,13 +126,13 @@ export default function ModeCatalog({ covers }: ModeCatalogProps) {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#181411] group-hover:text-[#EA580C] transition-colors truncate">
+                  <h3 className="text-lg font-bold text-[#181411] dark:text-[#F5EFE6] group-hover:text-[#EA580C] transition-colors truncate">
                     {m.name}
                   </h3>
-                  <p className="font-mono text-[11px] text-[#71717A] truncate mb-2">
+                  <p className="font-mono text-[11px] text-[#71717A] dark:text-[#A89F94] truncate mb-2">
                     {m.jpTitle}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed line-clamp-2">
+                  <p className="text-xs sm:text-sm text-[#52525B] dark:text-[#A89F94] leading-relaxed line-clamp-2">
                     {m.tagline}
                   </p>
                 </div>
